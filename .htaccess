@@ -1,0 +1,13 @@
+Options +FollowSymLinks
+IndexIgnore */*
+RewriteEngine on
+
+# Перенаправление с ДОМЕН на ДОМЕН/api
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^(.*)$ /movies$1 [R=301]
+
+#Если URI начинается с movies/ то перенаправлять все запросы на index.php
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^movies(.*)$ /index.php
